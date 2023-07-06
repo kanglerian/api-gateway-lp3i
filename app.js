@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const regionRouter = require('./routes/region');
+const whatsappBotRouter = require('./routes/whatsappbot');
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/region', regionRouter);
+app.use('/whatsappbot', whatsappBotRouter);
 
 module.exports = app;
