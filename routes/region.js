@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const { URL_SERVICE_WILAYAH } = process.env;
-const api = apiAdapter(URL_SERVICE_WILAYAH);
+const api = apiAdapter('http://localhost:3002/');
 
 router.get('/provinces', async(req, res) => {
   try {

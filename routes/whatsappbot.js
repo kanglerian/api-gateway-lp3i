@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const { URL_SERVICE_WABOT } = process.env;
-const api = apiAdapter(URL_SERVICE_WABOT);
+const api = apiAdapter('http://localhost:4002/');
 
 router.get('/', async(req, res) => {
   try {
