@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://localhost:3002/');
+const api = apiAdapter('http://103.163.110.11:3002/');
 
 router.get('/provinces', async(req, res) => {
   try {
