@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const regionRouter = require('./routes/region');
 const whatsappBotRouter = require('./routes/whatsappbot');
 const complaintRouter = require('./routes/complaint');
+const pmbonlineRouter = require('./routes/pmbonline');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use('/', indexRouter);
 app.use('/region', regionRouter);
 app.use('/whatsappbot', whatsappBotRouter);
 app.use('/complaint', complaintRouter);
+app.use('/pmbonline', pmbonlineRouter);
 
 module.exports = app;
