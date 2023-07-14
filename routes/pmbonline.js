@@ -19,8 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/download/:identity/:filename', async (req, res) => {
     try {
-        const pmb = await api.get(`/download/${req.params.identity}/${req.params.filename}`);
-        return res.send(pmb.data);
+        return await api.get(`/download/${req.params.identity}/${req.params.filename}`);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
