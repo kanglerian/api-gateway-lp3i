@@ -19,8 +19,11 @@ router.get('/', async (req, res) => {
 
 router.get('/download/:identity/:filename', async (req, res) => {
     try {
-        const response = await api.get(`/download/${req.params.identity}/${req.params.filename}`);
-        return res.status(response.status).send(response.data);
+        const response = await api.get(`/download/${req.params.identity}/${req.params.filename}`, {
+            responseType: 'stream' // Menentukan responseType sebagai 'stream' agar dapat mengirimkan file sebagai respon
+        });
+        res.setHeader('Content-Disposition', `attachment; filename="${req.params.filename}"`);
+        return response.data.pipe(res);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
