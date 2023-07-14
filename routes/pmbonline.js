@@ -17,6 +17,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/download/:identity/:filename', async (req, res) => {
+    try {
+        const pmb = await api.get('/download/:identity/:filename');
+        return res.send(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
 router.post('/pmbupload', async (req, res) => {
     try {
         const pmb = await api.post('/pmbupload', req.body);
