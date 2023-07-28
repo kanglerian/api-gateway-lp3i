@@ -69,18 +69,4 @@ router.post('/store', async (req, res) => {
     }
 });
 
-router.delete('/remove', async (req, res) => {
-    try {
-        console.log(req.body);
-        const pmb = await api.post('/remove', req.body);
-        return res.json(pmb.data);
-    } catch (error) {
-        if (error.code === 'ECONNREFUSED') {
-            return res.status(500).json({ status: 'error', message: 'service unavailable' });
-        }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
-    }
-});
-
 module.exports = router;
