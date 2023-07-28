@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 router.get('/histories', async (req, res) => {
     try {
         const pmb = await api.get('/histories');
-        return res.json(pmb);
+        return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
