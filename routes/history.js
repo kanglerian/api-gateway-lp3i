@@ -33,7 +33,7 @@ router.get('/histories', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const pmb = await api.get(`/history/${req.params.id}`);
-        return res.json(pmb);
+        return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
 router.get('/phone/:phone', async (req, res) => {
     try {
         const pmb = await api.get(`/history/phone/${req.params.phone}`);
-        return res.json(pmb);
+        return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
@@ -59,7 +59,7 @@ router.get('/phone/:phone', async (req, res) => {
 router.post('/store', async (req, res) => {
     try {
         const pmb = await api.post('/store', req.body);
-        return res.json(pmb);
+        return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
