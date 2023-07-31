@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/phone/:phone', async (req, res) => {
     try {
-        const pmb = await api.get(`/history/phone/${req.params.phone}`);
+        const pmb = await api.get(`/phone/${req.params.phone}`);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
