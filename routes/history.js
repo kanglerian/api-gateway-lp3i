@@ -32,7 +32,7 @@ router.get('/histories', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const pmb = await api.get(`/history/${req.params.id}`);
+        const pmb = await api.get(`/${req.params.id}`);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
