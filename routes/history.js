@@ -71,7 +71,7 @@ router.post('/store', async (req, res) => {
 
 router.post('/update/:id', async (req, res) => {
     try {
-        const pmb = await api.patch(`/${req.params.id}`);
+        const pmb = await api.patch(`/${req.params.id}`, req.body);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
