@@ -69,9 +69,9 @@ router.post('/store', async (req, res) => {
     }
 });
 
-router.post('/history/update/:id', async (req, res) => {
+router.post('/update/:id', async (req, res) => {
     try {
-        const pmb = await api.patch(`/history/${req.params.id}`);
+        const pmb = await api.patch(`/${req.params.id}`);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -82,9 +82,9 @@ router.post('/history/update/:id', async (req, res) => {
     }
 });
 
-router.post('/history/delete/:id', async (req, res) => {
+router.post('/delete/:id', async (req, res) => {
     try {
-        const pmb = await api.delete(`/history/${req.params.id}`);
+        const pmb = await api.delete(`/${req.params.id}`);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
