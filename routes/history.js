@@ -69,4 +69,30 @@ router.post('/store', async (req, res) => {
     }
 });
 
+router.patch('/history/:id', async (req, res) => {
+    try {
+        const pmb = await api.patch(`/history/${req.params.id}`);
+        return res.json(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
+router.delete('/history/:id', async (req, res) => {
+    try {
+        const pmb = await api.delete(`/history/${req.params.id}`);
+        return res.json(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
 module.exports = router;
