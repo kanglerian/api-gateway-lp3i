@@ -69,7 +69,7 @@ router.post('/store', async (req, res) => {
     }
 });
 
-router.patch('/history/:id', async (req, res) => {
+router.post('/history/update/:id', async (req, res) => {
     try {
         const pmb = await api.patch(`/history/${req.params.id}`);
         return res.json(pmb.data);
@@ -82,7 +82,7 @@ router.patch('/history/:id', async (req, res) => {
     }
 });
 
-router.delete('/history/:id', async (req, res) => {
+router.post('/history/delete/:id', async (req, res) => {
     try {
         const pmb = await api.delete(`/history/${req.params.id}`);
         return res.json(pmb.data);
