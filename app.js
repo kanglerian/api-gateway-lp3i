@@ -12,6 +12,8 @@ const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 
+const paudRouter = require('./routes/paud');
+
 const app = express();
 
 app.use(logger('dev'));
@@ -27,5 +29,7 @@ app.use('/whatsappbot', whatsappBotRouter);
 app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
+
+app.use('/paud', paudRouter);
 
 module.exports = app;
