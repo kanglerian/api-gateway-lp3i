@@ -17,20 +17,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
-    try {
-        const paud = await api.post('/', req.body);
-        return res.json(paud.data);
-    } catch (error) {
-        if (error.code === 'ECONNREFUSED') {
-            return res.status(500).json({ status: 'error', message: 'service unavailable' });
-        }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
-    }
-});
-
-// Users
 router.get('/users', async (req, res) => {
     try {
         const paud = await api.get('/users');
@@ -44,9 +30,10 @@ router.get('/users', async (req, res) => {
     }
 });
 
-router.post('/users', async (req, res) => {
+
+router.post('/login', async (req, res) => {
     try {
-        const paud = await api.post('/users', req.body);
+        const paud = await api.post('/login', req.body);
         return res.json(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -57,10 +44,9 @@ router.post('/users', async (req, res) => {
     }
 });
 
-// Token
-router.get('/token', async (req, res) => {
+router.get('/set-cookie', async (req, res) => {
     try {
-        const paud = await api.get('/token');
+        const paud = await api.get('/set-cookie');
         return res.send(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -71,10 +57,9 @@ router.get('/token', async (req, res) => {
     }
 });
 
-// Logout
-router.get('/logout', async (req, res) => {
+router.get('/get-cookie', async (req, res) => {
     try {
-        const paud = await api.get('/logout');
+        const paud = await api.get('/get-cookie');
         return res.send(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -84,5 +69,32 @@ router.get('/logout', async (req, res) => {
         return res.status(status).json(data);
     }
 });
+
+router.get('/protected', async (req, res) => {
+    try {
+        const paud = await api.get('/protected');
+        return res.send(paud.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
+router.post('/refresh', async (req, res) => {
+    try {
+        const paud = await api.post('/refresh', req);
+        return res.json(paud.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
 
 module.exports = router;
