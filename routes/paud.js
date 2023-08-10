@@ -47,6 +47,12 @@ router.post('/login', async (req, res) => {
 router.get('/set-cookie', async (req, res) => {
     try {
         const paud = await api.get('/set-cookie');
+        res.cookie('username', 'endang', {
+            maxAge: 3600000, // 1 hour
+            httpOnly: true, // Cookie can't be accessed by JavaScript
+            secure: true, // Send only over HTTPS
+            sameSite: 'none', // Allow cross-site requests
+          });
         return res.send(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
