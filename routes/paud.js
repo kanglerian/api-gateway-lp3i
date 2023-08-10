@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:7654/');
+const api = apiAdapter('http://103.163.111.39:7654');
 
 router.get('/', async (req, res) => {
     try {
