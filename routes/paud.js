@@ -58,8 +58,9 @@ router.get('/set-cookie', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        // const { status, data } = error.response;
+        // return res.status(status).json(data);
+        return res.send(error.response);
     }
 });
 
@@ -71,8 +72,9 @@ router.get('/get-cookie', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        // const { status, data } = error.response;
+        // return res.status(status).json(data);
+        return res.send(error.response);
     }
 });
 
