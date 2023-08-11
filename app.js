@@ -21,7 +21,14 @@ const app = express();
 app.use(logger('dev'));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://paud-client.vercel.app');
+  const allowedOrigins = [
+    'https://paud-client.vercel.app',
+    'http://localhost:5173/'
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
