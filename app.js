@@ -19,6 +19,14 @@ const paudRouter = require('./routes/paud');
 const app = express();
 
 app.use(logger('dev'));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://paud-client.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl requests)
