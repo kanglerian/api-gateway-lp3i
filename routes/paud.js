@@ -97,7 +97,9 @@ router.get('/refresh', async (req, res) => {
         }
         await api.post('/refresh', data)
         .then((response) => {
-            console.log(response.data);
+            return res.json({
+                accessToken: response.data.accessToken,
+            });
         })
         .catch((error) => {
             console.log(error.message)
