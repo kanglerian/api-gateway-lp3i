@@ -32,18 +32,23 @@ router.get('/users', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const paud = await api.post('/login', req.body);
-        console.log(req.body)
-        res.cookie('paudRefreshToken', paud.data.refreshToken, {
-            maxAge: 3600000, // 1 hour
-            httpOnly: true, // Cookie can't be accessed by JavaScript
-            secure: true, // Send only over HTTPS
-            sameSite: 'none'
-        });
-        return res.json({
-            accessToken: paud.data.accessToken,
-            refreshToken: paud.data.refreshToken
-        });
+        await api.post('/login', req.body)
+            .then((response) => {
+                console.log(response.data)
+                res.cookie('paudRefreshToken', paud.data.refreshToken, {
+                    maxAge: 3600000, // 1 hour
+                    httpOnly: true, // Cookie can't be accessed by JavaScript
+                    secure: true, // Send only over HTTPS
+                    sameSite: 'none'
+                });
+                return res.json({
+                    accessToken: paud.data.accessToken,
+                    refreshToken: paud.data.refreshToken
+                });
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
