@@ -38,8 +38,8 @@ router.post('/login', async (req, res) => {
                 res.cookie('paudRefreshToken', response.data.refreshToken, {
                     maxAge: 3600000, // 1 hour
                     httpOnly: true, // Cookie can't be accessed by JavaScript
-                    secure: true, // Send only over HTTPS
-                    sameSite: 'none'
+                    secure: false, // Send only over HTTPS
+                    // sameSite: 'none'
                 });
                 return res.json({
                     accessToken: response.data.accessToken,
