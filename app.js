@@ -23,7 +23,6 @@ app.use(logger('dev'));
 app.use((req, res, next) => {
   const allowedOrigins = [
     'https://paud-client.vercel.app',
-    'http://localhost:5173'
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
