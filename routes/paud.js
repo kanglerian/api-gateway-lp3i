@@ -95,7 +95,13 @@ router.get('/refresh', async (req, res) => {
         const data = {
             token: token
         }
-        const paud = await api.post('/refresh', data);
+        await api.post('/refresh', data)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
         return res.send(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
