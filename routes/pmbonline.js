@@ -36,8 +36,7 @@ router.get('/download/:identity/:namefile', async (req, res) => {
 router.post('/pmbupload', async (req, res) => {
     try {
         console.log(req.body);
-        // const pmb = await api.post('/pmbupload', req.body);
-        // console.log(req.body);
+        const pmb = await api.post('/pmbupload', req.body);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
