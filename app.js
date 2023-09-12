@@ -23,6 +23,7 @@ app.use(logger('dev'));
 app.use((req, res, next) => {
   const allowedOrigins = [
     'https://paud-client.vercel.app',
+    'https://database.politekniklp3i-tasikmalaya.ac.id'
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
@@ -38,7 +39,7 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     // Allow requests from specific origins
-    const allowedOrigins = ['https://paud-client.vercel.app'];
+    const allowedOrigins = ['https://paud-client.vercel.app','https://database.politekniklp3i-tasikmalaya.ac.id'];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
