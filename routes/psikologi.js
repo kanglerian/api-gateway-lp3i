@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/token', async (req, res) => {
         const refreshToken = req.cookies.refreshToken;
-        console.log(refreshToken);
+        res.send(refreshToken);
     // try {
     //     const refreshToken = req.cookies.refreshToken;
     //     const psikologi = await api.post('/token', refreshToken);
