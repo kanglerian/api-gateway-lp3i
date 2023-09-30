@@ -18,19 +18,17 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/token', async (req, res) => {
+    try {
         const refreshToken = req.cookies.refreshToken;
-        res.send(refreshToken);
-    // try {
-    //     const refreshToken = req.cookies.refreshToken;
-    //     const psikologi = await api.post('/token', refreshToken);
-    //     return res.send(psikologi.data);
-    // } catch (error) {
-    //     if (error.code === 'ECONNREFUSED') {
-    //         return res.status(500).json({ status: 'error', message: 'service unavailable' });
-    //     }
-    //     const { status, data } = error.response;
-    //     return res.status(status).json(data);
-    // }
+        const psikologi = await api.post('/token', refreshToken);
+        return res.send(psikologi.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
 });
 
 router.get('/users', async (req, res) => {
