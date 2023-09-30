@@ -20,11 +20,6 @@ router.get('/', async (req, res) => {
 router.get('/token', async (req, res) => {
     try {
         const psikologi = await api.get('/token');
-        res.cookie('refreshToken', psikologi.data.refreshToken, {
-            httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000,
-            // secure: true,
-        });
         return res.send(psikologi.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -74,8 +69,13 @@ router.post('/users', async (req, res) => {
 
 router.post('/auth/login', async (req, res) => {
     try {
-        const pskilogi = await api.post('/auth/login', req.body);
-        return res.json(pskilogi.data);
+        const psikologi = await api.post('/auth/login', req.body);
+        res.cookie('refreshToken', psikologi.data.refreshToken, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000,
+            // secure: true,
+        });
+        return res.json(psikologi.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
