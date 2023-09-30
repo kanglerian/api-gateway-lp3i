@@ -17,4 +17,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/users', async (req, res) => {
+    try {
+        const pskilogi = await api.post('/users', req.body);
+        return res.json(pskilogi.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
 module.exports = router;
