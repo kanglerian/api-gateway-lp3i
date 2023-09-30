@@ -33,7 +33,16 @@ router.get('/token', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const psikologi = await api.get('/users');
+        const token = req.headers['authorization'];
+        // Memeriksa apakah token akses ada dalam header permintaan
+        if (!token) {
+            return res.status(401).json({ message: 'Token akses tidak ditemukan' });
+        }
+        const psikologi = await api.get('/users',{
+            headers: {
+                'Authorization': token,
+            }
+        });
         return res.send(psikologi.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
