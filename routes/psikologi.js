@@ -19,8 +19,6 @@ router.get('/', async (req, res) => {
 
 router.get('/token', async (req, res) => {
     try {
-        const refreshToken = req.cookies.refreshToken;
-
         const axiosInstance = axios.create({
             withCredentials: true,
         });
