@@ -18,22 +18,20 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/token', async (req, res) => {
-    try {
-        const axiosInstance = axios.create({
-            withCredentials: true,
-        });
-
-        const response = await axiosInstance.get('/token');
-        return res.send(response.data);
-    } catch (error) {
-        if (error.code === 'ECONNREFUSED') {
-            return res.status(500).json({ status: 'error', message: 'service unavailable' });
-        }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
-    }
+        const refreshToken = req.cookies.refreshToken;
+        console.log(refreshToken);
+    // try {
+    //     const refreshToken = req.cookies.refreshToken;
+    //     const psikologi = await api.post('/token', refreshToken);
+    //     return res.send(psikologi.data);
+    // } catch (error) {
+    //     if (error.code === 'ECONNREFUSED') {
+    //         return res.status(500).json({ status: 'error', message: 'service unavailable' });
+    //     }
+    //     const { status, data } = error.response;
+    //     return res.status(status).json(data);
+    // }
 });
-
 
 router.get('/users', async (req, res) => {
     try {
