@@ -19,8 +19,16 @@ router.get('/', async (req, res) => {
 
 router.get('/token', async (req, res) => {
     try {
-        const psikologi = await api.get('/token');
-        return res.send(psikologi.data);
+        const refreshToken = req.cookies.refreshToken;
+
+        const axiosInstance = axios.create({
+            withCredentials: true,
+        });
+
+        const response = await axiosInstance.get('/token',{
+            cookie: refreshToken
+        });
+        return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
