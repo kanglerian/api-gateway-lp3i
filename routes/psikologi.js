@@ -25,9 +25,7 @@ router.get('/token', async (req, res) => {
             withCredentials: true,
         });
 
-        const response = await axiosInstance.get('/token',{
-            cookie: refreshToken
-        });
+        const response = await axiosInstance.get('/token');
         return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
