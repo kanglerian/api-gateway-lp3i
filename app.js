@@ -13,6 +13,7 @@ const whatsappBotRouter = require('./routes/whatsappbot');
 const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
+const psikologiRouter = require('./routes/psikologi');
 
 const paudRouter = require('./routes/paud');
 
@@ -74,6 +75,7 @@ app.use('/whatsappbot', whatsappBotRouter);
 app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
+app.use('/psikologi', psikologiRouter);
 
 app.use('/paud', paudRouter);
 
