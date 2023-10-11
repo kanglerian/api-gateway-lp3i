@@ -42,8 +42,12 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     // Allow requests from specific origins
-    const allowedOrigins = ['https://paud-client.vercel.app', 'https://database.politekniklp3i-tasikmalaya.ac.id',
-      'https://politekniklp3i-tasikmalaya.ac.id'];
+    const allowedOrigins = [
+      'https://paud-client.vercel.app',
+      'https://database.politekniklp3i-tasikmalaya.ac.id',
+      'https://politekniklp3i-tasikmalaya.ac.id',
+      'http://127.0.0.1:8000',
+    ];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
