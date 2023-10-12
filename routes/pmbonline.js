@@ -50,7 +50,7 @@ router.post('/pmbupload', async (req, res) => {
 router.delete('/remove', async (req, res) => {
     try {
         console.log(req.body);
-        const pmb = await api.post('/remove', req.body);
+        const pmb = await api.delete('/remove', req.body);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
