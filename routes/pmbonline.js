@@ -47,7 +47,7 @@ router.post('/pmbupload', async (req, res) => {
     }
 });
 
-router.post('/removefile', async (req, res) => {
+router.delete('/removefile', async (req, res) => {
     try {
         console.log(req.body);
         const pmb = await api.post('/remove', req.body);
