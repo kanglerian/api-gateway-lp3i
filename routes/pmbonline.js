@@ -23,7 +23,7 @@ router.get('/download', async (req, res) => {
             params: req.query,
             responseType: 'stream'
         });
-        res.setHeader('Content-Disposition', `attachment; filename="${req.query.namefile}"`);
+        res.setHeader('Content-Disposition', `attachment; filename="${req.query.filename}"`);
         return response.data.pipe(res);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
