@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:3033/');
+const api = apiAdapter('http://localhost:3033/');
 
 router.get('/', async (req, res) => {
     try {
@@ -17,12 +17,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/download/:identity/:namefile', async (req, res) => {
+router.get('/download', async (req, res) => {
     try {
-        const response = await api.get(`/download/${req.params.identity}/${req.params.namefile}`, {
-            responseType: 'stream' // Menentukan responseType sebagai 'stream' agar dapat mengirimkan file sebagai respon
+        const response = await api.get(`/download`, {
+            params: req.query,
+            responseType: 'stream'
         });
-        res.setHeader('Content-Disposition', `attachment; filename="${req.params.namefile}"`);
+        res.setHeader('Content-Disposition', `attachment; filename="${req.query.namefile}"`);
         return response.data.pipe(res);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -33,10 +34,9 @@ router.get('/download/:identity/:namefile', async (req, res) => {
     }
 });
 
-router.post('/pmbupload', async (req, res) => {
+router.post('/upload', async (req, res) => {
     try {
-        console.log(req.body);
-        const pmb = await api.post('/pmbupload', req.body);
+        const pmb = await api.post('/upload', req.body);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -47,10 +47,9 @@ router.post('/pmbupload', async (req, res) => {
     }
 });
 
-router.delete('/removefile', async (req, res) => {
+router.delete('/delete',  async (req, res) => {
     try {
-        console.log(req.body);
-        const pmb = await api.post('/remove', req.body);
+        const pmb = await api.delete('/delete', { params: req.query });
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {

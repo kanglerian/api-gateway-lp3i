@@ -14,3 +14,6 @@ Content-Type: application/json
   "username": "kanglerian",
   "password": "lerian123"
 }
+###
+DELETE http://localhost:3000/pmbonline/delete?identity=201702103
+###
