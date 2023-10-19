@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   const allowedOrigins = [
     'https://paud-client.vercel.app',
     'https://database.politekniklp3i-tasikmalaya.ac.id',
-    'https://sbpmb.politekniklp3i-tasikmalaya.ac.id/',
+    'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
     'http://127.0.0.1:8000',
     'http://localhost:5173'
@@ -47,7 +47,7 @@ const corsOptions = {
     const allowedOrigins = [
       'https://paud-client.vercel.app',
       'https://database.politekniklp3i-tasikmalaya.ac.id',
-      'https://sbpmb.politekniklp3i-tasikmalaya.ac.id/',
+      'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
       'http://127.0.0.1:8000',
       'http://localhost:5173'
