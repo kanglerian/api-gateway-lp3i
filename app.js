@@ -27,7 +27,8 @@ app.use((req, res, next) => {
     'https://database.politekniklp3i-tasikmalaya.ac.id',
     'http://sbpmb.politekniklp3i-tasikmalaya.ac.id/',
     'https://politekniklp3i-tasikmalaya.ac.id',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'http://localhost:5173'
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
@@ -48,7 +49,9 @@ const corsOptions = {
       'https://database.politekniklp3i-tasikmalaya.ac.id',
       'http://sbpmb.politekniklp3i-tasikmalaya.ac.id/',
       'https://politekniklp3i-tasikmalaya.ac.id',
-      'http://127.0.0.1:8000'
+      'http://127.0.0.1:8000',
+      'http://localhost:5173'
+      
     ];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
