@@ -15,6 +15,12 @@ const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 const psikologiRouter = require('./routes/psikologi');
 
+const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
+const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
+const scholarshipRecordsRouter = require('./routes/scholarship/records');
+const scholarshipAnswersRouter = require('./routes/scholarship/answers');
+const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
+
 const paudRouter = require('./routes/paud');
 
 const app = express();
@@ -87,6 +93,12 @@ app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/psikologi', psikologiRouter);
+
+app.use('/scholarship/categories', scholarshipCategoriesRouter);
+app.use('/scholarship/questions', scholarshipQuestionsRouter);
+app.use('/scholarship/records', scholarshipRecordsRouter);
+app.use('/scholarship/answers', scholarshipAnswersRouter);
+app.use('/scholarship/histories', scholarshipHistoriesRouter);
 
 app.use('/paud', paudRouter);
 
