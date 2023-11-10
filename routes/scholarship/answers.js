@@ -32,6 +32,19 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/question/:id', async (req, res) => {
+    try {
+        const answer = await api.get(`/question/${req.params.id}`);
+        return res.json(answer.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         const answer = await api.post('/', req.body);
