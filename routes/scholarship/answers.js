@@ -71,6 +71,18 @@ router.patch('/:id', async (req, res) => {
     }
 });
 
+router.delete('/question/:id', async (req, res) => {
+    try {
+        const answer = await api.delete(`/question/${req.params.id}`);
+        return res.json(answer.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        const { status, data } = error.response;
+        return res.status(status).json(data);
+    }
+});
 
 router.delete('/:id', async (req, res) => {
     try {
