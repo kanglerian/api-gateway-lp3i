@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -26,8 +25,7 @@ router.get('/token', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -48,8 +46,7 @@ router.get('/users', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -62,8 +59,7 @@ router.post('/users', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -80,8 +76,7 @@ router.post('/auth/login', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -94,8 +89,7 @@ router.get('/auth/logout', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 

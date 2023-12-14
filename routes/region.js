@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -25,8 +24,7 @@ router.get('/provinces', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -38,8 +36,7 @@ router.get('/regencies/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -51,8 +48,7 @@ router.get('/districts/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -64,8 +60,7 @@ router.get('/villages/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 

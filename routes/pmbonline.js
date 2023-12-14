@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -29,8 +28,7 @@ router.get('/download', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -42,12 +40,11 @@ router.post('/upload', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
-router.delete('/delete',  async (req, res) => {
+router.delete('/delete', async (req, res) => {
     try {
         const pmb = await api.delete('/delete', { params: req.query });
         return res.json(pmb.data);
@@ -55,8 +52,7 @@ router.delete('/delete',  async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 

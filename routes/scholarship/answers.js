@@ -14,8 +14,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -27,8 +26,7 @@ router.get('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -40,8 +38,7 @@ router.get('/question/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -53,8 +50,7 @@ router.post('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -66,8 +62,7 @@ router.patch('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -79,8 +74,7 @@ router.delete('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 

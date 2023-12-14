@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.json(error.response);
     }
 });
 
@@ -25,8 +24,7 @@ router.get('/users', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        const { status, data } = error.response;
-        return res.status(status).json(data);
+        return res.json(error.response);
     }
 });
 
@@ -53,7 +51,7 @@ router.post('/login', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.send(error.response);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -69,7 +67,7 @@ router.get('/token', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.send(error.response);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -85,7 +83,7 @@ router.get('/protected', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.send(error.response);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -96,20 +94,20 @@ router.get('/refresh', async (req, res) => {
             token: token
         }
         await api.post('/refresh', data)
-        .then((response) => {
-            return res.json({
-                accessToken: response.data.accessToken,
-            });
-        })
-        .catch((error) => {
-            console.log(error.message)
-        })
+            .then((response) => {
+                return res.json({
+                    accessToken: response.data.accessToken,
+                });
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
         return res.send(paud.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.send(error.response);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 });
 
@@ -126,7 +124,7 @@ router.get('/logout', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.send(error.response);
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
 })
 
