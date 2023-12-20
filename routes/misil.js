@@ -30,6 +30,7 @@ router.post('/token', async (req, res) => {
 router.post('/integration', async (req, res) => {
     try {
         let data = req.body;
+        console.log(data);
         const misil = await api.post('/service/integration/marketing/save-aplikan', data[0], {
             headers: data[1],
           });
