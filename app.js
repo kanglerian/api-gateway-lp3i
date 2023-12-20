@@ -15,6 +15,8 @@ const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 const psikologiRouter = require('./routes/psikologi');
 
+const misilRouter = require('./routes/misil');
+
 const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
 const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
@@ -94,6 +96,7 @@ app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/psikologi', psikologiRouter);
+app.use('/misil', misilRouter);
 
 app.use('/scholarship/categories', scholarshipCategoriesRouter);
 app.use('/scholarship/questions', scholarshipQuestionsRouter);
