@@ -52,6 +52,18 @@ router.get('/phone/:phone', async (req, res) => {
     }
 });
 
+router.get('/count/:phone', async (req, res) => {
+    try {
+        const pmb = await api.get(`/count/${req.params.phone}`);
+        return res.json(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+    }
+});
+
 router.post('/store', async (req, res) => {
     try {
         const pmb = await api.post('/store', req.body);
