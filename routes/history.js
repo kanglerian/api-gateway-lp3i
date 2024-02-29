@@ -64,9 +64,33 @@ router.get('/count/:phone', async (req, res) => {
     }
 });
 
+router.get('/detail/:pmb/:identity', async (req, res) => {
+    try {
+        const pmb = await api.get(`/detail/${req.params.pmb}/${req.params.identity}`);
+        return res.json(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+    }
+});
+
 router.post('/store', async (req, res) => {
     try {
         const pmb = await api.post('/store', req.body);
+        return res.json(pmb.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+    }
+});
+
+router.patch('/update/:phone', async (req, res) => {
+    try {
+        const pmb = await api.patch(`/update/${req.params.phone}`, req.body);
         return res.json(pmb.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {

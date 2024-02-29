@@ -16,6 +16,9 @@ const historyRouter = require('./routes/history');
 const psikologiRouter = require('./routes/psikologi');
 
 const misilRouter = require('./routes/misil');
+const applicantsRouter = require('./routes/applicants');
+
+const eventsMemberRouter = require('./routes/events/member');
 
 const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
 const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
@@ -34,6 +37,7 @@ app.use((req, res, next) => {
     'https://paud-client.vercel.app',
     'https://database.politekniklp3i-tasikmalaya.ac.id',
     'https://pmb.politekniklp3i-tasikmalaya.ac.id',
+    'https://presence.politekniklp3i-tasikmalaya.ac.id',
     'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
     'http://127.0.0.1:8000',
@@ -50,19 +54,17 @@ app.use((req, res, next) => {
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    // Allow requests from specific origins
     const allowedOrigins = [
       'https://paud-client.vercel.app',
       'https://database.politekniklp3i-tasikmalaya.ac.id',
+      'https://presence.politekniklp3i-tasikmalaya.ac.id',
       'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
       'http://127.0.0.1:8000',
       'http://localhost:5173',
       'https://siruang.politekniklp3i-tasikmalaya.ac.id',
-      
     ];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -97,6 +99,9 @@ app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/psikologi', psikologiRouter);
 app.use('/misil', misilRouter);
+
+app.use('/applicants', applicantsRouter);
+app.use('/events/members', eventsMemberRouter);
 
 app.use('/scholarship/categories', scholarshipCategoriesRouter);
 app.use('/scholarship/questions', scholarshipQuestionsRouter);

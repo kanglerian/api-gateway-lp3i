@@ -28,6 +28,18 @@ router.post('/send', async (req, res) => {
     }
 });
 
+router.post('/send-general', async (req, res) => {
+    try {
+        const result = await api.post('/send-general', req.body);
+        return res.json(result.data);
+    } catch (error) {
+        if (error.code === 'ECONNREFUSED') {
+            return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        }
+        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+    }
+});
+
 router.get('/report', async (req, res) => {
     try {
         const whatsapp = await api.get('/report');
