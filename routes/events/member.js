@@ -66,7 +66,7 @@ router.get('/cancel/:phone', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-const responses = await api.post('/', req.body);
+        const responses = await api.post('/', req.body);
         return res.json(responses.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
@@ -74,7 +74,7 @@ const responses = await api.post('/', req.body);
         }
         return res.status(500).json({ error: "Terjadi kesalahan pada server." });
     }
-});
+}); 
 
 
 module.exports = router;

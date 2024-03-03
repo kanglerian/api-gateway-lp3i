@@ -18,6 +18,8 @@ const psikologiRouter = require('./routes/psikologi');
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
 
+const whatsappRouter = require('./routes/whatsapp/whatsapp');
+
 const eventsMemberRouter = require('./routes/events/member');
 
 const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
@@ -101,6 +103,10 @@ app.use('/psikologi', psikologiRouter);
 app.use('/misil', misilRouter);
 
 app.use('/applicants', applicantsRouter);
+
+
+app.use('/whatsapp', whatsappRouter);
+
 app.use('/events/members', eventsMemberRouter);
 
 app.use('/scholarship/categories', scholarshipCategoriesRouter);
