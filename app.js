@@ -29,6 +29,8 @@ const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
 const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
 
+const dashboardProgram = require('./routes/dashboard/program');
+
 const paudRouter = require('./routes/paud');
 
 const app = express();
@@ -118,6 +120,8 @@ app.use('/scholarship/answers', scholarshipAnswersRouter);
 app.use('/scholarship/histories', scholarshipHistoriesRouter);
 
 app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
+
+app.use('/dashboard/program', dashboardProgram);
 
 app.use('/paud', paudRouter);
 
