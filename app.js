@@ -27,6 +27,7 @@ const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
 const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
+const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
 
 const paudRouter = require('./routes/paud');
 
@@ -43,7 +44,8 @@ app.use((req, res, next) => {
     'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
     'http://127.0.0.1:8000',
-    'http://localhost:5173'
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5500'
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
@@ -64,9 +66,10 @@ const corsOptions = {
       'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
-      'http://127.0.0.1:8000',
-      'http://localhost:5173',
       'https://siruang.politekniklp3i-tasikmalaya.ac.id',
+      'http://127.0.0.1:8000',
+      'http://127.0.0.1:5173',
+      'http://127.0.0.1:5500',
     ];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -104,7 +107,6 @@ app.use('/misil', misilRouter);
 
 app.use('/applicants', applicantsRouter);
 
-
 app.use('/whatsapp', whatsappRouter);
 
 app.use('/events/members', eventsMemberRouter);
@@ -114,6 +116,8 @@ app.use('/scholarship/questions', scholarshipQuestionsRouter);
 app.use('/scholarship/records', scholarshipRecordsRouter);
 app.use('/scholarship/answers', scholarshipAnswersRouter);
 app.use('/scholarship/histories', scholarshipHistoriesRouter);
+
+app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
 
 app.use('/paud', paudRouter);
 
