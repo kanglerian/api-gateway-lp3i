@@ -18,8 +18,6 @@ const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 const psikologiRouter = require('./routes/psikologi');
 
-const helpdeskRouter = require('./routes/helpdesk');
-
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
 
