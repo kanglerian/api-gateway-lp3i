@@ -130,8 +130,6 @@ app.use('/history', historyRouter);
 app.use('/psikologi', psikologiRouter);
 app.use('/misil', misilRouter);
 
-app.use('/helpdesk', helpdeskRouter);
-
 app.use('/applicants', applicantsRouter);
 
 app.use('/whatsapp', whatsappRouter);
