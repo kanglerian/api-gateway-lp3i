@@ -15,6 +15,8 @@ const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 const psikologiRouter = require('./routes/psikologi');
 
+const helpdeskRouter = require('./routes/helpdesk');
+
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
 
@@ -42,6 +44,7 @@ app.use((req, res, next) => {
     'https://paud-client.vercel.app',
     'https://database.politekniklp3i-tasikmalaya.ac.id',
     'https://pmb.politekniklp3i-tasikmalaya.ac.id',
+    'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
     'https://presence.politekniklp3i-tasikmalaya.ac.id',
     'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
@@ -65,6 +68,7 @@ const corsOptions = {
       'https://paud-client.vercel.app',
       'https://database.politekniklp3i-tasikmalaya.ac.id',
       'https://presence.politekniklp3i-tasikmalaya.ac.id',
+      'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
       'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
@@ -106,6 +110,8 @@ app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/psikologi', psikologiRouter);
 app.use('/misil', misilRouter);
+
+app.use('/helpdesk', helpdeskRouter);
 
 app.use('/applicants', applicantsRouter);
 
