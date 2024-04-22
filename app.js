@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const cors = require('cors');
+const http = require('http');
+
+const { Server } = require('socket.io');
 
 const indexRouter = require('./routes/index');
 const regionRouter = require('./routes/region');
@@ -36,8 +39,17 @@ const dashboardProgram = require('./routes/dashboard/program');
 const paudRouter = require('./routes/paud');
 
 const app = express();
+const server = http.createServer(app);
 
 app.use(logger('dev'));
+
+const allowedOriginSocket = [
+  'http://127.0.0.1:5500',
+  'http://127.0.0.1:5501',
+  'https://politekniklp3i-tasikmalaya.ac.id',
+  'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
+  'https://ict.politekniklp3i-tasikmalaya.ac.id',
+];
 
 app.use((req, res, next) => {
   const allowedOrigins = [
@@ -86,6 +98,13 @@ const corsOptions = {
   credentials: true,
 };
 
+const io = new Server(server, {
+  cors: {
+    origin: allowedOriginSocket,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"]
+  }
+});
+
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
@@ -131,4 +150,13 @@ app.use('/dashboard/program', dashboardProgram);
 
 app.use('/paud', paudRouter);
 
-module.exports = app;
+io.on('connection', (socket) => {
+  console.log('client connected');
+
+  socket.on("message", (response) => {
+    io.emit('help', response)
+    console.log(response);
+  });
+});
+
+module.exports = {app, server};
