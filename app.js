@@ -16,7 +16,6 @@ const whatsappBotRouter = require('./routes/whatsappbot');
 const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
-const psikologiRouter = require('./routes/psikologi');
 
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
@@ -30,6 +29,13 @@ const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
 const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
+
+const kecerdasanUsersRouter = require('./routes/kecerdasan/users');
+const kecerdasanTypesRouter = require('./routes/kecerdasan/types');
+const kecerdasanQuestionsRouter = require('./routes/kecerdasan/questions');
+const kecerdasanTestsRouter = require('./routes/kecerdasan/tests');
+const kecerdasanHasilsRouter = require('./routes/kecerdasan/hasils');
+
 const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
 
 const dashboardProgram = require('./routes/dashboard/program');
@@ -47,6 +53,7 @@ const allowedOriginSocket = [
   'https://politekniklp3i-tasikmalaya.ac.id',
   'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
+  'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
 ];
 
 app.use((req, res, next) => {
@@ -55,6 +62,7 @@ app.use((req, res, next) => {
     'https://database.politekniklp3i-tasikmalaya.ac.id',
     'https://pmb.politekniklp3i-tasikmalaya.ac.id',
     'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
+    'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
     'https://presence.politekniklp3i-tasikmalaya.ac.id',
     'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
@@ -125,7 +133,6 @@ app.use('/whatsappbot', whatsappBotRouter);
 app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
-app.use('/psikologi', psikologiRouter);
 app.use('/misil', misilRouter);
 
 app.use('/applicants', applicantsRouter);
@@ -139,6 +146,12 @@ app.use('/scholarship/questions', scholarshipQuestionsRouter);
 app.use('/scholarship/records', scholarshipRecordsRouter);
 app.use('/scholarship/answers', scholarshipAnswersRouter);
 app.use('/scholarship/histories', scholarshipHistoriesRouter);
+
+app.use('/kecerdasan/users', kecerdasanUsersRouter);
+app.use('/kecerdasan/types', kecerdasanTypesRouter);
+app.use('/kecerdasan/questions', kecerdasanQuestionsRouter);
+app.use('/kecerdasan/tests', kecerdasanTestsRouter);
+app.use('/kecerdasan/hasils', kecerdasanHasilsRouter);
 
 app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
 
