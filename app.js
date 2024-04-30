@@ -87,6 +87,7 @@ const corsOptions = {
       'https://database.politekniklp3i-tasikmalaya.ac.id',
       'https://presence.politekniklp3i-tasikmalaya.ac.id',
       'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
+      'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
       'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
