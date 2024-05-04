@@ -6,8 +6,8 @@ const api = apiAdapter('http://103.163.111.39:8001/hasils');
 
 router.get('/', async (req, res) => {
     try {
-        const response = await api.get('/');
-        return res.send(response.data);
+        await api.get('/');
+        return res.send('Terunduh!');
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
