@@ -8,6 +8,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const http = require('http');
 
+const { Message } = require('./models')
+
 const { Server } = require('socket.io');
 
 const indexRouter = require('./routes/index');
@@ -163,9 +165,18 @@ app.use('/paud', paudRouter);
 io.on('connection', (socket) => {
   console.log('client connected');
 
-  socket.on("message", (response) => {
+  socket.on("message", async (response) => {
     io.emit('help', response)
-    console.log(response);
+    if(response.request){
+      try {
+        await Message.create({
+          room: response.room,
+          message: response.message,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   });
 });
 
