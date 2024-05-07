@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": null,
     "database": "helpdesk_db",
-    "host": "127.0.0.1",
+    "host": "103.163.111.39",
     "dialect": "postgres",
     "port": 5432
   },
