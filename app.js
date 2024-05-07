@@ -19,6 +19,8 @@ const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 
+const helpdeskRouter = require('./routes/helpdesk');
+
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
 
@@ -137,6 +139,8 @@ app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/misil', misilRouter);
+
+app.use('/helpdesk', helpdeskRouter);
 
 app.use('/applicants', applicantsRouter);
 
