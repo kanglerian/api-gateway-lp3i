@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": null,
+    "password": "",
     "database": "helpdesk_db",
     "host": "103.163.111.39",
     "dialect": "postgres",
