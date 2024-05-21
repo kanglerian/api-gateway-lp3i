@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ExcelJS = require('exceljs');
+const moment = require('moment-timezone');
 const { Op } = require('sequelize');
 const { Message } = require('../models')
 
@@ -46,11 +47,12 @@ router.get('/report/download', async (req, res) => {
         sheet.addRow(['No.','Ruangan', 'Keluhan', 'Tanggal']);
 
         results.forEach((result, index) => {
+            const time = moment(result.createdAt).tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm:ss');
             sheet.addRow([
                 index + 1,
                 `${result.room}`,
                 `${result.message}`,
-                `${result.createdAt}`,
+                `${time}`,
             ]);
         });
 
