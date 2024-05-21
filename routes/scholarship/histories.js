@@ -55,9 +55,9 @@ router.patch('/:id', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:identityUser/:categoryId', async (req, res) => {
     try {
-        const history = await api.delete(`/${req.params.id}`);
+        const history = await api.delete(`/${req.params.id}/${req.params.categoryId}`);
         return res.json(history.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
