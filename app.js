@@ -72,6 +72,7 @@ app.use((req, res, next) => {
     'https://politekniklp3i-tasikmalaya.ac.id',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:5173',
+    'http://localhost:5173',
     'http://127.0.0.1:5500'
   ];
   const origin = req.headers.origin;
@@ -98,6 +99,7 @@ const corsOptions = {
       'https://siruang.politekniklp3i-tasikmalaya.ac.id',
       'http://127.0.0.1:8000',
       'http://127.0.0.1:5173',
+      'http://localhost:5173',
       'http://127.0.0.1:5500',
     ];
     if (allowedOrigins.includes(origin)) {
