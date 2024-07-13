@@ -58,6 +58,7 @@ const allowedOriginSocket = [
   'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
   'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
+  'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
 ];
 
 app.use((req, res, next) => {
@@ -67,6 +68,7 @@ app.use((req, res, next) => {
     'https://pmb.politekniklp3i-tasikmalaya.ac.id',
     'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
     'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
+    'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
     'https://presence.politekniklp3i-tasikmalaya.ac.id',
     'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
     'https://politekniklp3i-tasikmalaya.ac.id',
@@ -93,6 +95,7 @@ const corsOptions = {
       'https://presence.politekniklp3i-tasikmalaya.ac.id',
       'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
       'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
+      'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
       'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
