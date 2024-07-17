@@ -54,6 +54,8 @@ const allowedOriginSocket = [
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
   'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
   'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
+  'https://database.politekniklp3i-tasikmalaya.ac.id',
+  'https://pmb.politekniklp3i-tasikmalaya.ac.id',
 ];
 
 app.use((req, res, next) => {
@@ -87,11 +89,11 @@ const corsOptions = {
     const allowedOrigins = [
       'https://paud-client.vercel.app',
       'https://database.politekniklp3i-tasikmalaya.ac.id',
+      'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://presence.politekniklp3i-tasikmalaya.ac.id',
       'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
       'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
       'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
-      'https://pmb.politekniklp3i-tasikmalaya.ac.id',
       'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
       'https://politekniklp3i-tasikmalaya.ac.id',
       'https://siruang.politekniklp3i-tasikmalaya.ac.id',
