@@ -7,8 +7,8 @@ module.exports = {
       {
         name: "Utama",
         token: "46150",
-        type: 0,
-        secret: 0,
+        type: false,
+        secret: false,
         createdAt: new Date(),
         updatedAt: new Date()
       }
