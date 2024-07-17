@@ -24,7 +24,7 @@ module.exports = {
       not_save: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 0
+        defaultValue: false
       },
       uuid_sender: {
         type: Sequelize.UUID,
