@@ -18,33 +18,28 @@ const whatsappBotRouter = require('./routes/whatsappbot');
 const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
-
-const helpdeskRouter = require('./routes/helpdesk');
-
 const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
-
 const whatsappRouter = require('./routes/whatsapp/whatsapp');
-
 const eventsMemberRouter = require('./routes/events/member');
-
 const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
 const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
 const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
-
 const kecerdasanUsersRouter = require('./routes/kecerdasan/users');
 const kecerdasanTypesRouter = require('./routes/kecerdasan/types');
 const kecerdasanQuestionsRouter = require('./routes/kecerdasan/questions');
 const kecerdasanTestsRouter = require('./routes/kecerdasan/tests');
 const kecerdasanHasilsRouter = require('./routes/kecerdasan/hasils');
-
 const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
-
 const dashboardProgram = require('./routes/dashboard/program');
-
 const paudRouter = require('./routes/paud');
+
+const usersHelpdeskRouter = require('./routes/helpdesk/users');
+const roomsHelpdeskRouter = require('./routes/helpdesk/rooms');
+const chatsHelpdeskRouter = require('./routes/helpdesk/chats');
+const authHelpdeskRouter = require('./routes/helpdesk/auth');
 
 const app = express();
 const server = http.createServer(app);
@@ -144,32 +139,27 @@ app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/misil', misilRouter);
-
-app.use('/helpdesk', helpdeskRouter);
-
 app.use('/applicants', applicantsRouter);
-
 app.use('/whatsapp', whatsappRouter);
-
 app.use('/events/members', eventsMemberRouter);
-
 app.use('/scholarship/categories', scholarshipCategoriesRouter);
 app.use('/scholarship/questions', scholarshipQuestionsRouter);
 app.use('/scholarship/records', scholarshipRecordsRouter);
 app.use('/scholarship/answers', scholarshipAnswersRouter);
 app.use('/scholarship/histories', scholarshipHistoriesRouter);
-
 app.use('/kecerdasan/users', kecerdasanUsersRouter);
 app.use('/kecerdasan/types', kecerdasanTypesRouter);
 app.use('/kecerdasan/questions', kecerdasanQuestionsRouter);
 app.use('/kecerdasan/tests', kecerdasanTestsRouter);
 app.use('/kecerdasan/hasils', kecerdasanHasilsRouter);
-
 app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
-
 app.use('/dashboard/program', dashboardProgram);
-
 app.use('/paud', paudRouter);
+
+app.use('/helpdesk/auth', authHelpdeskRouter);
+app.use('/helpdesk/chats', chatsHelpdeskRouter);
+app.use('/helpdesk/rooms', roomsHelpdeskRouter);
+app.use('/helpdesk/users', usersHelpdeskRouter);
 
 io.on('connection', (socket) => {
   console.log('client connected');
