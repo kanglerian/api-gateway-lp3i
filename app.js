@@ -8,7 +8,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const http = require('http');
 
-const { Message } = require('./models')
+const { Chat } = require('./models');
 
 const { Server } = require('socket.io');
 
@@ -167,16 +167,42 @@ io.on('connection', (socket) => {
   console.log('client connected');
 
   socket.on("message", async (response) => {
-    io.emit('help', response)
-    if(response.request){
+    if (!response.not_save) {
       try {
-        await Message.create({
-          room: response.room,
+        const data = await Chat.create({
+          client: response.client,
+          name_room: response.name_room,
+          token: response.token,
+          not_save: response.not_save,
+          uuid_sender: response.uuid_sender,
+          name_sender: response.name_sender,
+          role_sender: response.role_sender,
           message: response.message,
+          reply: response.reply,
+          date: response.date,
+          latitude: response.latitude,
+          longitude: response.longitude,
         });
-      } catch (error) {
-        console.log(error);
+        io.emit('message', data)
+      } catch (err) {
+        console.log(err.message);
       }
+    } else {
+      const data = {
+        client: response.client,
+        name_room: response.name_room,
+        token: response.token,
+        not_save: response.not_save,
+        uuid_sender: response.uuid_sender,
+        name_sender: response.name_sender,
+        role_sender: response.role_sender,
+        message: response.message,
+        reply: response.reply,
+        date: response.date,
+        latitude: response.latitude,
+        longitude: response.longitude,
+      };
+      io.emit('message', data)
     }
   });
 });
