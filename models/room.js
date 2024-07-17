@@ -14,14 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Room.init({
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4
-    },
     name: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.CHAR
+    token: DataTypes.STRING,
+    type: DataTypes.BOOLEAN,
+    secret: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Room',
