@@ -1,16 +1,15 @@
 require('dotenv').config();
-const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const session = require('express-session');
+const bodyParser = require('body-parser');
+const { Server } = require('socket.io');
+const express = require('express');
 const logger = require('morgan');
+const path = require('path');
 const cors = require('cors');
 const http = require('http');
 
 const { Chat } = require('./models');
-
-const { Server } = require('socket.io');
 
 const indexRouter = require('./routes/index');
 const regionRouter = require('./routes/region');
@@ -22,23 +21,28 @@ const misilRouter = require('./routes/misil');
 const applicantsRouter = require('./routes/applicants');
 const whatsappRouter = require('./routes/whatsapp/whatsapp');
 const eventsMemberRouter = require('./routes/events/member');
+
+/* Service Scholarship */
 const scholarshipCategoriesRouter = require('./routes/scholarship/categories');
 const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
 const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
+
+/* Service Psikotest */
 const kecerdasanUsersRouter = require('./routes/kecerdasan/users');
 const kecerdasanTypesRouter = require('./routes/kecerdasan/types');
 const kecerdasanQuestionsRouter = require('./routes/kecerdasan/questions');
 const kecerdasanTestsRouter = require('./routes/kecerdasan/tests');
 const kecerdasanHasilsRouter = require('./routes/kecerdasan/hasils');
-const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
-const dashboardProgram = require('./routes/dashboard/program');
-const paudRouter = require('./routes/paud');
 
+/* Service Brain */
 const brainHasilsRouter = require('./routes/brain/hasils');
 const brainAnswersRouter = require('./routes/brain/answers');
 
+const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
+const dashboardProgram = require('./routes/dashboard/program');
+const paudRouter = require('./routes/paud');
 const usersHelpdeskRouter = require('./routes/helpdesk/users');
 const roomsHelpdeskRouter = require('./routes/helpdesk/rooms');
 const chatsHelpdeskRouter = require('./routes/helpdesk/chats');
@@ -47,11 +51,7 @@ const authHelpdeskRouter = require('./routes/helpdesk/auth');
 const app = express();
 const server = http.createServer(app);
 
-app.use(logger('dev'));
-
-const allowedOriginSocket = [
-  'http://127.0.0.1:5500',
-  'http://127.0.0.1:5501',
+const allowedOrigins = [
   'https://politekniklp3i-tasikmalaya.ac.id',
   'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
@@ -60,55 +60,17 @@ const allowedOriginSocket = [
   'https://database.politekniklp3i-tasikmalaya.ac.id',
   'https://pmb.politekniklp3i-tasikmalaya.ac.id',
   'https://test-otak.politekniklp3i-tasikmalaya.ac.id',
+  'https://presence.politekniklp3i-tasikmalaya.ac.id',
+  'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
+  'https://siruang.politekniklp3i-tasikmalaya.ac.id',
+  'http://127.0.0.1:8000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5500',
 ];
 
-app.use((req, res, next) => {
-  const allowedOrigins = [
-    'https://paud-client.vercel.app',
-    'https://database.politekniklp3i-tasikmalaya.ac.id',
-    'https://test-otak.politekniklp3i-tasikmalaya.ac.id',
-    'https://pmb.politekniklp3i-tasikmalaya.ac.id',
-    'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
-    'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
-    'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
-    'https://presence.politekniklp3i-tasikmalaya.ac.id',
-    'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
-    'https://politekniklp3i-tasikmalaya.ac.id',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:5173',
-    'http://localhost:5173',
-    'http://127.0.0.1:5500'
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    const allowedOrigins = [
-      'https://paud-client.vercel.app',
-      'https://database.politekniklp3i-tasikmalaya.ac.id',
-      'https://pmb.politekniklp3i-tasikmalaya.ac.id',
-      'https://test-otak.politekniklp3i-tasikmalaya.ac.id',
-      'https://presence.politekniklp3i-tasikmalaya.ac.id',
-      'https://helpdesk.politekniklp3i-tasikmalaya.ac.id',
-      'https://psikotest.politekniklp3i-tasikmalaya.ac.id',
-      'https://beasiswa.politekniklp3i-tasikmalaya.ac.id',
-      'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
-      'https://politekniklp3i-tasikmalaya.ac.id',
-      'https://siruang.politekniklp3i-tasikmalaya.ac.id',
-      'http://127.0.0.1:8000',
-      'http://127.0.0.1:5173',
-      'http://localhost:5173',
-      'http://127.0.0.1:5500',
-    ];
-    if (allowedOrigins.includes(origin)) {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -119,11 +81,12 @@ const corsOptions = {
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOriginSocket,
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"]
   }
 });
 
+app.use(logger('dev'));
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
@@ -216,4 +179,4 @@ io.on('connection', (socket) => {
   });
 });
 
-module.exports = {app, server};
+module.exports = { app, server };
