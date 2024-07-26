@@ -36,6 +36,9 @@ const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone'
 const dashboardProgram = require('./routes/dashboard/program');
 const paudRouter = require('./routes/paud');
 
+const brainHasilsRouter = require('./routes/brain/hasils');
+const brainAnswersRouter = require('./routes/brain/answers');
+
 const usersHelpdeskRouter = require('./routes/helpdesk/users');
 const roomsHelpdeskRouter = require('./routes/helpdesk/rooms');
 const chatsHelpdeskRouter = require('./routes/helpdesk/chats');
@@ -160,6 +163,9 @@ app.use('/kecerdasan/hasils', kecerdasanHasilsRouter);
 app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
 app.use('/dashboard/program', dashboardProgram);
 app.use('/paud', paudRouter);
+
+app.use('/brain/hasils', brainHasilsRouter);
+app.use('/brain/answers', brainAnswersRouter);
 
 app.use('/helpdesk/auth', authHelpdeskRouter);
 app.use('/helpdesk/chats', chatsHelpdeskRouter);
