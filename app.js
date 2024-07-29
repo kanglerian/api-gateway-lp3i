@@ -70,6 +70,7 @@ const allowedOrigins = [
   'https://database.politekniklp3i-tasikmalaya.ac.id',
   'https://pmb.politekniklp3i-tasikmalaya.ac.id',
   'https://test-otak.politekniklp3i-tasikmalaya.ac.id',
+  'https://test-gaya-belajar.politekniklp3i-tasikmalaya.ac.id',
   'https://presence.politekniklp3i-tasikmalaya.ac.id',
   'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
   'https://siruang.politekniklp3i-tasikmalaya.ac.id',
