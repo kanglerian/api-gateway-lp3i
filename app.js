@@ -45,6 +45,7 @@ const gayabelajarDetailsRouter = require('./routes/gayabelajar/details');
 const gayabelajarQuestionsRouter = require('./routes/gayabelajar/questions');
 const gayabelajarHasilsRouter = require('./routes/gayabelajar/hasils');
 const gayabelajarTestsRouter = require('./routes/gayabelajar/tests');
+const gayabelajarUsersRouter = require('./routes/gayabelajar/users');
 
 const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
 const dashboardProgram = require('./routes/dashboard/program');
@@ -146,6 +147,7 @@ app.use('/gayabelajar/details', gayabelajarDetailsRouter);
 app.use('/gayabelajar/questions', gayabelajarQuestionsRouter);
 app.use('/gayabelajar/hasils', gayabelajarHasilsRouter);
 app.use('/gayabelajar/tests', gayabelajarTestsRouter);
+app.use('/gayabelajar/users', gayabelajarUsersRouter);
 
 app.use('/helpdesk/auth', authHelpdeskRouter);
 app.use('/helpdesk/chats', chatsHelpdeskRouter);
