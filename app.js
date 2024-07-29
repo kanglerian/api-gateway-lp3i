@@ -40,6 +40,12 @@ const kecerdasanHasilsRouter = require('./routes/kecerdasan/hasils');
 const brainHasilsRouter = require('./routes/brain/hasils');
 const brainAnswersRouter = require('./routes/brain/answers');
 
+/* Service Test Gaya Belajar */
+const gayabelajarDetailsRouter = require('./routes/gayabelajar/details');
+const gayabelajarQuestionsRouter = require('./routes/gayabelajar/questions');
+const gayabelajarHasilsRouter = require('./routes/gayabelajar/hasils');
+const gayabelajarTestsRouter = require('./routes/gayabelajar/tests');
+
 const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
 const dashboardProgram = require('./routes/dashboard/program');
 const paudRouter = require('./routes/paud');
@@ -135,6 +141,11 @@ app.use('/paud', paudRouter);
 
 app.use('/brain/hasils', brainHasilsRouter);
 app.use('/brain/answers', brainAnswersRouter);
+
+app.use('/gayabelajar/details', gayabelajarDetailsRouter);
+app.use('/gayabelajar/questions', gayabelajarQuestionsRouter);
+app.use('/gayabelajar/hasils', gayabelajarHasilsRouter);
+app.use('/gayabelajar/tests', gayabelajarTestsRouter);
 
 app.use('/helpdesk/auth', authHelpdeskRouter);
 app.use('/helpdesk/chats', chatsHelpdeskRouter);
