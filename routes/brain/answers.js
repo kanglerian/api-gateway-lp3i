@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -49,7 +49,7 @@ router.patch('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -61,7 +61,7 @@ router.delete('/:id', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

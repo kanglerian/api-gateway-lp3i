@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -24,7 +24,7 @@ router.get('/report', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -36,7 +36,7 @@ router.get('/find/:phone', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -48,7 +48,7 @@ router.get('/presence/:phone', async (req, res) => {
       if (error.code === 'ECONNREFUSED') {
           return res.status(500).json({ status: 'error', message: 'service unavailable' });
       }
-      return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+      return res.status(500).json({ error: "an error occurred on the server" });
   }
 });
 
@@ -60,7 +60,7 @@ router.get('/cancel/:phone', async (req, res) => {
       if (error.code === 'ECONNREFUSED') {
           return res.status(500).json({ status: 'error', message: 'service unavailable' });
       }
-      return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+      return res.status(500).json({ error: "an error occurred on the server" });
   }
 });
 
@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
-        return res.status(500).json({ error: "Terjadi kesalahan pada server." });
+        return res.status(500).json({ error: "an error occurred on the server" });
     }
 }); 
 
