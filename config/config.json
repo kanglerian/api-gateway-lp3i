@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "dev",
-    "password": null,
+    "username": "postgres",
+    "password": "lp3itasikpsql",
     "database": "helpdesk_db",
-    "host": "localhost",
+    "host": "103.163.111.39",
     "dialect": "postgres",
     "port": 5432
   },
