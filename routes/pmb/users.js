@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { SERVICE_PMBONLINE } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://localhost:3106/users');
+const api = apiAdapter(`${SERVICE_PMBONLINE}/users`);
 
 router.get('/', async (req, res) => {
   try {

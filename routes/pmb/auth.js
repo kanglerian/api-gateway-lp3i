@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { SERVICE_PMBONLINE } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://localhost:3106/auth');
+const api = apiAdapter(`${SERVICE_PMBONLINE}/auth`);
 
 router.get('/', async (req, res) => {
   try {
@@ -23,6 +25,38 @@ router.post('/login', async (req, res) => {
       httpOnly: true,
       secure: false,
     });
+    return res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(500).json({ status: 'error', message: 'service unavailable' });
+    } else {
+      const response = error.response;
+      return res.status(response.status).json(response.data);
+    }
+  }
+})
+
+router.post('/register/v1', async (req, res) => {
+  try {
+    const response = await api.post('/register/v1', req.body);
+    res.cookie('refreshTokenPMBOnline', response.data.refresh_token, {
+      httpOnly: true,
+      secure: false,
+    });
+    return res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(500).json({ status: 'error', message: 'service unavailable' });
+    } else {
+      const response = error.response;
+      return res.status(response.status).json(response.data);
+    }
+  }
+})
+
+router.post('/validation', async (req, res) => {
+  try {
+    const response = await api.post('/validation', req.body);
     return res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {

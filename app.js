@@ -57,6 +57,7 @@ const authHelpdeskRouter = require('./routes/helpdesk/auth');
 
 const pmbAuthRouter = require('./routes/pmb/auth');
 const pmbUsersRouter = require('./routes/pmb/users');
+const pmbApplicantsRouter = require('./routes/pmb/applicants');
 
 const app = express();
 const server = http.createServer(app);
@@ -157,6 +158,7 @@ app.use('/helpdesk/users', usersHelpdeskRouter);
 
 app.use('/pmb/auth', pmbAuthRouter);
 app.use('/pmb/users', pmbUsersRouter);
+app.use('/pmb/applicants', pmbApplicantsRouter);
 
 io.on('connection', (socket) => {
   console.log('client connected');
