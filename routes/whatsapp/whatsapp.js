@@ -1,30 +1,36 @@
+require('dotenv').config();
+const { SERVICE_WHATSAPP } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:4003/');
+const api = apiAdapter(`${SERVICE_WHATSAPP}`);
 
 router.get('/', async (req, res) => {
     try {
-        const whatsapp = await api.get('/');
-        return res.send(whatsapp.data);
+        const response = await api.get('/');
+        return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.post('/send', async (req, res) => {
     try {
-        const whatsapp = await api.post('/send', req.body);
-        return res.json(whatsapp.data);
+        const response = await api.post('/send', req.body);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

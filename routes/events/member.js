@@ -8,13 +8,15 @@ const api = apiAdapter(`${SERVICE_EVENT}/members`);
 
 router.get('/', async (req, res) => {
     try {
-        const responses = await api.get('/');
-        return res.send(responses.data);
+        const response = await api.get('/');
+        return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -25,27 +27,31 @@ router.get('/report', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/find/:phone', async (req, res) => {
     try {
-        const responses = await api.get(`/find/${req.params.phone}`);
-        return res.json(responses.data);
+        const response = await api.get(`/find/${req.params.phone}`);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/presence/:phone', async (req, res) => {
   try {
-      const responses = await api.get(`/presence/${req.params.phone}`);
-      return res.json(responses.data);
+      const response = await api.get(`/presence/${req.params.phone}`);
+      return res.json(response.data);
   } catch (error) {
       if (error.code === 'ECONNREFUSED') {
           return res.status(500).json({ status: 'error', message: 'service unavailable' });
@@ -56,8 +62,8 @@ router.get('/presence/:phone', async (req, res) => {
 
 router.get('/cancel/:phone', async (req, res) => {
   try {
-      const responses = await api.get(`/cancel/${req.params.phone}`);
-      return res.json(responses.data);
+      const response = await api.get(`/cancel/${req.params.phone}`);
+      return res.json(response.data);
   } catch (error) {
       if (error.code === 'ECONNREFUSED') {
           return res.status(500).json({ status: 'error', message: 'service unavailable' });
@@ -68,15 +74,17 @@ router.get('/cancel/:phone', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const responses = await api.post('/', req.body);
-        return res.json(responses.data);
+        const response = await api.post('/', req.body);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
-}); 
+});
 
 
 module.exports = router;

@@ -1,66 +1,78 @@
+require('dotenv').config();
+const { SERVICE_REGION } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:3002/');
+const api = apiAdapter(`${SERVICE_REGION}`);
 
 router.get('/', async (req, res) => {
     try {
-        const provinces = await api.get('/');
-        return res.send(provinces.data);
+        const response = await api.get('/');
+        return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/provinces', async (req, res) => {
     try {
-        const provinces = await api.get('/provinces');
-        return res.json(provinces.data);
+        const response = await api.get('/provinces');
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/regencies/:id', async (req, res) => {
     try {
-        const regencies = await api.get(`/regencies/${req.params.id}`);
-        return res.json(regencies.data);
+        const response = await api.get(`/regencies/${req.params.id}`);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/districts/:id', async (req, res) => {
     try {
-        const districts = await api.get(`/districts/${req.params.id}`);
-        return res.json(districts.data);
+        const response = await api.get(`/districts/${req.params.id}`);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.get('/villages/:id', async (req, res) => {
     try {
-        const villages = await api.get(`/villages/${req.params.id}`);
-        return res.json(villages.data);
+        const response = await api.get(`/villages/${req.params.id}`);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

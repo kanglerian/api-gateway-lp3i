@@ -13,8 +13,10 @@ router.get('/', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -25,8 +27,10 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -37,8 +41,10 @@ router.post('/', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -49,8 +55,10 @@ router.patch('/:id', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -61,8 +69,10 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

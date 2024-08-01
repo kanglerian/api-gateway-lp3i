@@ -1,9 +1,11 @@
+require('dotenv').config();
+const { SERVICE_KECERDASAN } = process.env;
 const express = require('express');
 const ExcelJS = require('exceljs');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:8001/hasils');
+const api = apiAdapter(`${SERVICE_KECERDASAN}/hasils`);
 
 router.get('/', async (req, res) => {
     try {
@@ -34,8 +36,10 @@ router.get('/', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
@@ -46,8 +50,10 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

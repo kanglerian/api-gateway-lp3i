@@ -5,6 +5,6 @@ module.exports = (baseUrl) => {
         timeout: parseInt(1800000),
         headers: {
             'Content-Type': 'application/json',
-          },
+        },
     });
 }

@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { SERVICE_MISIL } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://103.163.111.45:8000');
+const api = apiAdapter(`${SERVICE_MISIL}`);
 
 router.get('/', async (req, res) => {
     try {
@@ -10,37 +12,42 @@ router.get('/', async (req, res) => {
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.post('/token', async (req, res) => {
     try {
-        const misil = await api.post('/service/auth/sign-in', req.body);
-        return res.json(misil.data);
+        const response = await api.post('/service/auth/sign-in', req.body);
+        return res.json(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
 router.post('/integration', async (req, res) => {
     try {
         let data = req.body;
-        console.log(data);
-        const misil = await api.post('/service/integration/marketing/save-aplikan', data[0], {
+        const response = await api.post('/service/integration/marketing/save-aplikan', data[0], {
             headers: data[1],
-          });
-        return res.json(misil.data);
+        });
+        return res.json(response.data);
     } catch (error) {
         console.log(error);
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 

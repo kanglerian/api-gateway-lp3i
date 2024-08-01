@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
     if (error.code === 'ECONNREFUSED') {
       return res.status(500).json({ status: 'error', message: 'service unavailable' });
     } else {
-      return res.status(500).json({ error: "an error occurred on the server" });
+      const response = error.response;
+      return res.status(response.status).json(response.data);
     }
   }
 })

@@ -1,18 +1,22 @@
+require('dotenv').config();
+const { SERVICE_APPLICANT } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:3032/');
+const api = apiAdapter(`${SERVICE_APPLICANT}`);
 
 router.get('/', async (req, res) => {
     try {
-        const pmb = await api.get('/');
-        return res.send(pmb.data);
+        const response = await api.get('/');
+        return res.send(response.data);
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
+        } else {
+            const response = error.response;
+            return res.status(response.status).json(response.data);
         }
-        return res.status(500).json({ error: "an error occurred on the server" });
     }
 });
 
