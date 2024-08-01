@@ -1,9 +1,11 @@
+require('dotenv').config();
+const { SERVICE_BRAIN } = process.env;
 const express = require('express');
 const ExcelJS = require('exceljs');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:8003/hasils');
+const api = apiAdapter(`${SERVICE_BRAIN}/hasils`);
 
 router.get('/', async (req, res) => {
     try {

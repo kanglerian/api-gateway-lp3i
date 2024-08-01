@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { SERVICE_EVENT } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:3034/members');
+const api = apiAdapter(`${SERVICE_EVENT}/members`);
 
 router.get('/', async (req, res) => {
     try {

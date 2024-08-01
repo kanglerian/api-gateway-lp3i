@@ -1,8 +1,10 @@
+require('dotenv').config();
+const { SERVICE_GAYABELAJAR } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('../apiAdapter');
 
-const api = apiAdapter('http://103.163.111.39:8004/questions');
+const api = apiAdapter(`${SERVICE_GAYABELAJAR}/questions`);
 
 router.get('/', async (req, res) => {
     try {

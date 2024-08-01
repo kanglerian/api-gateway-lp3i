@@ -47,8 +47,6 @@ const gayabelajarHasilsRouter = require('./routes/gayabelajar/hasils');
 const gayabelajarTestsRouter = require('./routes/gayabelajar/tests');
 const gayabelajarUsersRouter = require('./routes/gayabelajar/users');
 
-const whatsappBlastClientOneRouter = require('./routes/whatsapp-blast/clientone');
-const dashboardProgram = require('./routes/dashboard/program');
 const paudRouter = require('./routes/paud');
 const usersHelpdeskRouter = require('./routes/helpdesk/users');
 const roomsHelpdeskRouter = require('./routes/helpdesk/rooms');
@@ -138,8 +136,6 @@ app.use('/kecerdasan/types', kecerdasanTypesRouter);
 app.use('/kecerdasan/questions', kecerdasanQuestionsRouter);
 app.use('/kecerdasan/tests', kecerdasanTestsRouter);
 app.use('/kecerdasan/hasils', kecerdasanHasilsRouter);
-app.use('/whatsapp-blast/clientone', whatsappBlastClientOneRouter);
-app.use('/dashboard/program', dashboardProgram);
 app.use('/paud', paudRouter);
 
 app.use('/brain/hasils', brainHasilsRouter);
