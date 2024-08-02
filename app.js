@@ -57,6 +57,11 @@ const authHelpdeskRouter = require('./routes/helpdesk/auth');
 const pmbAuthRouter = require('./routes/pmb/auth');
 const pmbUsersRouter = require('./routes/pmb/users');
 const pmbApplicantsRouter = require('./routes/pmb/applicants');
+const pmbSchoolsRouter = require('./routes/pmb/schools');
+
+
+/* Service Dashboard */
+const dashboardProgramRouter = require('./routes/dashboard/programs');
 
 const app = express();
 const server = http.createServer(app);
@@ -162,6 +167,10 @@ app.use('/helpdesk/users', usersHelpdeskRouter);
 app.use('/pmb/auth', pmbAuthRouter);
 app.use('/pmb/users', pmbUsersRouter);
 app.use('/pmb/applicants', pmbApplicantsRouter);
+app.use('/pmb/schools', pmbSchoolsRouter);
+
+/* Service Dashboard */
+app.use('/dashboard/programs', dashboardProgramRouter);
 
 io.on('connection', (socket) => {
   console.log('client connected');
