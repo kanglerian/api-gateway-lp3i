@@ -56,8 +56,10 @@ const authHelpdeskRouter = require('./routes/helpdesk/auth');
 /* Service PMB Online */
 const pmbAuthRouter = require('./routes/pmb/auth');
 const pmbUsersRouter = require('./routes/pmb/users');
+const pmbProfilesRouter = require('./routes/pmb/profiles');
 const pmbApplicantsRouter = require('./routes/pmb/applicants');
 const pmbSchoolsRouter = require('./routes/pmb/schools');
+const pmbIntegrationRouter = require('./routes/pmb/integration');
 
 
 /* Service Dashboard */
@@ -166,8 +168,10 @@ app.use('/helpdesk/users', usersHelpdeskRouter);
 /* Service PMB Online */
 app.use('/pmb/auth', pmbAuthRouter);
 app.use('/pmb/users', pmbUsersRouter);
+app.use('/pmb/profiles', pmbProfilesRouter);
 app.use('/pmb/applicants', pmbApplicantsRouter);
 app.use('/pmb/schools', pmbSchoolsRouter);
+app.use('/pmb/integration', pmbIntegrationRouter);
 
 /* Service Dashboard */
 app.use('/dashboard/programs', dashboardProgramRouter);
