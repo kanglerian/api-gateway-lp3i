@@ -42,7 +42,7 @@ router.patch('/update/v1/:identity', async (req, res) => {
     } else {
       const response = error.response;
       return res.status(response.status).json(response.data);
-    }
+    } 
   }
 });
 
