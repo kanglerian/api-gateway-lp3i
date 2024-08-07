@@ -8,11 +8,7 @@ const api = apiAdapter(`${SERVICE_PMBONLINE}/presenters`);
 
 router.get('/', async (req, res) => {
   try {
-    const response = await api.get('/',{
-      headers: {
-        'Authorization': req.headers.authorization,
-      }
-    });
+    const response = await api.get('/');
     return res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
