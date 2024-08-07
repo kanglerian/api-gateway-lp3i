@@ -60,6 +60,7 @@ const pmbProfilesRouter = require('./routes/pmb/profiles');
 const pmbApplicantsRouter = require('./routes/pmb/applicants');
 const pmbSchoolsRouter = require('./routes/pmb/schools');
 const pmbIntegrationRouter = require('./routes/pmb/integration');
+const pmbUseruploadRouter = require('./routes/pmb/userupload');
 
 /* Service Dashboard */
 const dashboardProgramRouter = require('./routes/dashboard/programs');
@@ -171,6 +172,7 @@ app.use('/pmb/profiles', pmbProfilesRouter);
 app.use('/pmb/applicants', pmbApplicantsRouter);
 app.use('/pmb/schools', pmbSchoolsRouter);
 app.use('/pmb/integration', pmbIntegrationRouter);
+app.use('/pmb/userupload', pmbUseruploadRouter);
 
 /* Service Dashboard */
 app.use('/dashboard/programs', dashboardProgramRouter);
