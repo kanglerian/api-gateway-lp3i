@@ -37,6 +37,24 @@ router.post('/login', async (req, res) => {
   }
 })
 
+router.post('/login/v1', async (req, res) => {
+  try {
+    const response = await api.post('/login/v1', req.body);
+    res.cookie('refreshTokenPMBOnlineV1', response.data.refresh_token, {
+      httpOnly: true,
+      secure: false,
+    });
+    return res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(500).json({ status: 'error', message: 'service unavailable' });
+    } else {
+      const response = error.response;
+      return res.status(response.status).json(response.data);
+    }
+  }
+})
+
 router.post('/register/v1', async (req, res) => {
   try {
     const response = await api.post('/register/v1', req.body);
