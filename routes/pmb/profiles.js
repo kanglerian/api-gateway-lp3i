@@ -8,7 +8,7 @@ const api = apiAdapter(`${SERVICE_PMBONLINE}/profiles`);
 
 router.get('/v1', async (req, res) => {
   try {
-    const response = await api.get('/',{
+    const response = await api.get('/v1',{
       headers: {
         'Authorization': req.headers.authorization,
       }
