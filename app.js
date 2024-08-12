@@ -82,6 +82,7 @@ const allowedOrigins = [
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
   'https://pmb.politekniklp3i-tasikmalaya.ac.id',
   'https://politekniklp3i-tasikmalaya.ac.id',
+  'https://pmb.amisbudi.cloud',
   'http://127.0.0.1:8000',
   'http://127.0.0.1:5173',
   'http://127.0.0.1:5500',
