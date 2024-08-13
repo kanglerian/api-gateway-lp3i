@@ -48,6 +48,7 @@ const gayabelajarTestsRouter = require('./routes/gayabelajar/tests');
 const gayabelajarUsersRouter = require('./routes/gayabelajar/users');
 
 /* Service Helpdesk */
+const reportsHelpdeskRouter = require('./routes/helpdesk/reports');
 const usersHelpdeskRouter = require('./routes/helpdesk/users');
 const roomsHelpdeskRouter = require('./routes/helpdesk/rooms');
 const chatsHelpdeskRouter = require('./routes/helpdesk/chats');
@@ -166,6 +167,7 @@ app.use('/helpdesk/auth', authHelpdeskRouter);
 app.use('/helpdesk/chats', chatsHelpdeskRouter);
 app.use('/helpdesk/rooms', roomsHelpdeskRouter);
 app.use('/helpdesk/users', usersHelpdeskRouter);
+app.use('/helpdesk/reports', reportsHelpdeskRouter);
 
 /* Service PMB Online */
 app.use('/pmb/auth', pmbAuthRouter);
