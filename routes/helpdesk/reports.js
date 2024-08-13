@@ -1,22 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const ExcelJS = require('exceljs');
-const { Message } = require('../../models');
+const { Chat } = require('../../models');
 
 /* GET report listing. */
-router.get('/download', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-      const results = await Message.findAll();
+      const results = await Chat.findAll({
+        where: {
+          token: '46150',
+          role_sender: 'S'
+        }
+      });
 
       const workbook = new ExcelJS.Workbook();
       const sheet = workbook.addWorksheet('Laporan Helpdesk');
 
-      sheet.addRow(['No.','Ruangan', 'Keluhan', 'Tanggal']);
+      sheet.addRow(['No.','Ruangan', 'Pesan', 'Tanggal']);
 
       results.forEach((result, index) => {
           sheet.addRow([
               index + 1,
-              `${result.room}`,
+              `${result.client}`,
               `${result.message}`,
               `${result.createdAt}`,
           ]);
@@ -28,7 +33,6 @@ router.get('/download', async (req, res) => {
       const buffer = await workbook.xlsx.writeBuffer();
       res.send(buffer);
   } catch (error) {
-      console.log(error);
       return res.json(error);
   }
 });
