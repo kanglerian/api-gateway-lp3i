@@ -6,6 +6,7 @@ const apiAdapter = require('../apiAdapter');
 
 const api = apiAdapter(`${SERVICE_PMBONLINE}/profiles`);
 
+/* Use for PPO, TGB, Psikotest */
 router.get('/v1', async (req, res) => {
   try {
     const response = await api.get('/v1',{

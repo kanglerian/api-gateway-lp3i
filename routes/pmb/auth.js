@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+/* Use for PPO */
 router.post('/login/v1', async (req, res) => {
   try {
     const response = await api.post('/login/v1', req.body);
@@ -37,6 +38,7 @@ router.post('/login/v1', async (req, res) => {
   }
 })
 
+/* Use for TGB, Psikotest */
 router.post('/login/v2', async (req, res) => {
   try {
     const response = await api.post('/login/v2', req.body);
@@ -55,6 +57,7 @@ router.post('/login/v2', async (req, res) => {
   }
 })
 
+/* Use for PPO */
 router.post('/register/v1', async (req, res) => {
   try {
     const response = await api.post('/register/v1', req.body);
@@ -73,6 +76,7 @@ router.post('/register/v1', async (req, res) => {
   }
 })
 
+/* Use for TGB, Psikotest */
 router.post('/register/v2', async (req, res) => {
   try {
     const response = await api.post('/register/v2', req.body);
@@ -105,6 +109,7 @@ router.post('/validation', async (req, res) => {
   }
 })
 
+/* Use for PPO */
 router.get('/token/v1', async (req, res) => {
   try {
     const refreshTokenPMBOnline = req.cookies.refreshTokenPMBOnlineV1;
@@ -131,6 +136,7 @@ router.get('/token/v1', async (req, res) => {
   }
 })
 
+/* Use for TGB, Psikotest */
 router.get('/token/v2', async (req, res) => {
   try {
     const refreshTokenPMBOnline = req.cookies.refreshTokenPMBOnlineV2;
@@ -157,6 +163,7 @@ router.get('/token/v2', async (req, res) => {
   }
 })
 
+/* Use for PPO */
 router.delete('/logout/v1', async (req, res) => {
   try {
     const response = await api.delete('/logout/v1', {
@@ -178,6 +185,7 @@ router.delete('/logout/v1', async (req, res) => {
   }
 })
 
+/* Use for TGB, Psikotest */
 router.delete('/logout/v2', async (req, res) => {
   try {
     const response = await api.delete('/logout/v2', {
