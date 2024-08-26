@@ -58,6 +58,8 @@ const authHelpdeskRouter = require('./routes/helpdesk/auth');
 const pmbAuthRouter = require('./routes/pmb/auth');
 const pmbUsersRouter = require('./routes/pmb/users');
 const pmbPresentersRouter = require('./routes/pmb/presenters');
+const pmbAchievementsRouter = require('./routes/pmb/achievements');
+const pmbOrganizationsRouter = require('./routes/pmb/organizations');
 const pmbProfilesRouter = require('./routes/pmb/profiles');
 const pmbApplicantsRouter = require('./routes/pmb/applicants');
 const pmbSchoolsRouter = require('./routes/pmb/schools');
@@ -172,6 +174,8 @@ app.use('/helpdesk/reports', reportsHelpdeskRouter);
 /* Service PMB Online */
 app.use('/pmb/auth', pmbAuthRouter);
 app.use('/pmb/users', pmbUsersRouter);
+app.use('/pmb/achievements', pmbAchievementsRouter);
+app.use('/pmb/organizations', pmbOrganizationsRouter);
 app.use('/pmb/presenters', pmbPresentersRouter);
 app.use('/pmb/profiles', pmbProfilesRouter);
 app.use('/pmb/applicants', pmbApplicantsRouter);
