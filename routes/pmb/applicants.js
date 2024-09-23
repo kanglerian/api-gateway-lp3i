@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         'Authorization': req.headers.authorization,
       }
     });
-    return res.json(response.data);
+    return res.status(200).json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
       return res.status(500).json({ status: 'error', message: 'service unavailable' });

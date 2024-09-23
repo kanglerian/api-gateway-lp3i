@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const { Server } = require('socket.io');
 const express = require('express');
 const logger = require('morgan');
-const path = require('path');
 const cors = require('cors');
 const http = require('http');
 
@@ -18,7 +17,6 @@ const complaintRouter = require('./routes/complaint');
 const pmbonlineRouter = require('./routes/pmbonline');
 const historyRouter = require('./routes/history');
 const misilRouter = require('./routes/misil');
-const applicantsRouter = require('./routes/applicants');
 const whatsappRouter = require('./routes/whatsapp/whatsapp');
 const eventsMemberRouter = require('./routes/events/member');
 
@@ -63,8 +61,8 @@ const pmbOrganizationsRouter = require('./routes/pmb/organizations');
 const pmbProfilesRouter = require('./routes/pmb/profiles');
 const pmbApplicantsRouter = require('./routes/pmb/applicants');
 const pmbSchoolsRouter = require('./routes/pmb/schools');
-const pmbIntegrationRouter = require('./routes/pmb/integration');
 const pmbUseruploadRouter = require('./routes/pmb/userupload');
+const pmbIntegrationSiakadTasikRouter = require('./routes/pmb/integrations/SIAKAD-TASIK/siakad-applicants');
 
 /* Service Dashboard */
 const dashboardProgramRouter = require('./routes/dashboard/programs');
@@ -136,7 +134,6 @@ app.use('/complaint', complaintRouter);
 app.use('/pmbonline', pmbonlineRouter);
 app.use('/history', historyRouter);
 app.use('/misil', misilRouter);
-app.use('/applicants', applicantsRouter);
 app.use('/whatsapp', whatsappRouter);
 app.use('/events/members', eventsMemberRouter);
 
@@ -181,8 +178,8 @@ app.use('/pmb/presenters', pmbPresentersRouter);
 app.use('/pmb/profiles', pmbProfilesRouter);
 app.use('/pmb/applicants', pmbApplicantsRouter);
 app.use('/pmb/schools', pmbSchoolsRouter);
-app.use('/pmb/integration', pmbIntegrationRouter);
 app.use('/pmb/userupload', pmbUseruploadRouter);
+app.use('/pmb/integrations/siakadtasik', pmbIntegrationSiakadTasikRouter);
 
 /* Service Dashboard */
 app.use('/dashboard/programs', dashboardProgramRouter);

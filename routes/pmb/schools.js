@@ -8,8 +8,13 @@ const api = apiAdapter(`${SERVICE_PMBONLINE}/schools`);
 
 router.get('/', async (req, res) => {
   try {
-    const response = await api.get('/');
-    return res.json(response.data);
+    const response = await api.get('/', {
+      headers: {
+        'lp3i-api-key': req.headers['lp3i-api-key'],
+      },
+      params: req.query
+    });
+    return res.status(200).json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
       return res.status(500).json({ status: 'error', message: 'service unavailable' });
