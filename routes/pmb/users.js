@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     if (error.code === 'ECONNREFUSED') {
       return res.status(500).json({ status: 'error', message: 'service unavailable' });
     } else if (error.code === 'ERR_HTTP_INVALID_HEADER_VALUE') {
-      return res.status(401).json({ status: 'error', message: 'Headers kosong!' });
+      return res.status(401).json({ status: 'error', message: 'Headers are missing!' });
     } else {
       const response = error.response;
       return res.status(response.status).json(response.data);
