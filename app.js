@@ -82,6 +82,7 @@ const allowedOrigins = [
   'https://sbpmb.politekniklp3i-tasikmalaya.ac.id',
   'https://ict.politekniklp3i-tasikmalaya.ac.id',
   'https://pmb.politekniklp3i-tasikmalaya.ac.id',
+  'https://siakad.politekniklp3i-tasikmalaya.ac.id',
   'https://politekniklp3i-tasikmalaya.ac.id',
   'https://pmb.amisbudi.cloud',
   'https://farah-forgive.vercel.app',
