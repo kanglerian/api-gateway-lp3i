@@ -14,7 +14,7 @@ const indexRouter = require('./routes/index');
 const regionRouter = require('./routes/region');
 const whatsappBotRouter = require('./routes/whatsappbot');
 const complaintRouter = require('./routes/complaint');
-const pmbonlineRouter = require('./routes/pmbonline');
+const uploadRouter = require('./routes/upload');
 const historyRouter = require('./routes/history');
 const misilRouter = require('./routes/misil');
 const whatsappRouter = require('./routes/whatsapp/whatsapp');
@@ -26,24 +26,6 @@ const scholarshipQuestionsRouter = require('./routes/scholarship/questions');
 const scholarshipRecordsRouter = require('./routes/scholarship/records');
 const scholarshipAnswersRouter = require('./routes/scholarship/answers');
 const scholarshipHistoriesRouter = require('./routes/scholarship/histories');
-
-/* Service Psikotest */
-const psikotestUsersRouter = require('./routes/psikotest/users');
-const psikotestTypesRouter = require('./routes/psikotest/types');
-const psikotestQuestionsRouter = require('./routes/psikotest/questions');
-const psikotestTestsRouter = require('./routes/psikotest/tests');
-const psikotestHasilsRouter = require('./routes/psikotest/hasils');
-
-/* Service Brain */
-const brainHasilsRouter = require('./routes/brain/hasils');
-const brainAnswersRouter = require('./routes/brain/answers');
-
-/* Service Test Gaya Belajar */
-const gayabelajarDetailsRouter = require('./routes/gayabelajar/details');
-const gayabelajarQuestionsRouter = require('./routes/gayabelajar/questions');
-const gayabelajarHasilsRouter = require('./routes/gayabelajar/hasils');
-const gayabelajarTestsRouter = require('./routes/gayabelajar/tests');
-const gayabelajarUsersRouter = require('./routes/gayabelajar/users');
 
 /* Service Helpdesk */
 const reportsHelpdeskRouter = require('./routes/helpdesk/reports');
@@ -132,7 +114,7 @@ app.use('/', indexRouter);
 app.use('/region', regionRouter);
 app.use('/whatsappbot', whatsappBotRouter);
 app.use('/complaint', complaintRouter);
-app.use('/pmbonline', pmbonlineRouter);
+app.use('/upload', uploadRouter);
 app.use('/history', historyRouter);
 app.use('/misil', misilRouter);
 app.use('/whatsapp', whatsappRouter);
@@ -144,24 +126,6 @@ app.use('/scholarship/questions', scholarshipQuestionsRouter);
 app.use('/scholarship/records', scholarshipRecordsRouter);
 app.use('/scholarship/answers', scholarshipAnswersRouter);
 app.use('/scholarship/histories', scholarshipHistoriesRouter);
-
-/* Service Psikotest */
-app.use('/kecerdasan/users', psikotestUsersRouter);
-app.use('/kecerdasan/types', psikotestTypesRouter);
-app.use('/kecerdasan/questions', psikotestQuestionsRouter);
-app.use('/kecerdasan/tests', psikotestTestsRouter);
-app.use('/kecerdasan/hasils', psikotestHasilsRouter);
-
-/* Service Brain */
-app.use('/brain/hasils', brainHasilsRouter);
-app.use('/brain/answers', brainAnswersRouter);
-
-/* Service Test Gaya Belajar */
-app.use('/gayabelajar/details', gayabelajarDetailsRouter);
-app.use('/gayabelajar/questions', gayabelajarQuestionsRouter);
-app.use('/gayabelajar/hasils', gayabelajarHasilsRouter);
-app.use('/gayabelajar/tests', gayabelajarTestsRouter);
-app.use('/gayabelajar/users', gayabelajarUsersRouter);
 
 /* Service Helpdesk */
 app.use('/helpdesk/auth', authHelpdeskRouter);

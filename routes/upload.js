@@ -1,10 +1,10 @@
 require('dotenv').config();
-const { SERVICE_PMB } = process.env;
+const { SERVICE_UPLOAD } = process.env;
 const express = require('express');
 const router = express.Router();
 const apiAdapter = require('./apiAdapter');
 
-const api = apiAdapter(`${SERVICE_PMB}`);
+const api = apiAdapter(`${SERVICE_UPLOAD}`);
 
 router.get('/', async (req, res) => {
     try {
