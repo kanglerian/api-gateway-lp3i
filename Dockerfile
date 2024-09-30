@@ -1,5 +1,5 @@
 # Menggunakan image Node.js versi terbaru sebagai base image
-FROM node:20
+FROM node:20-alpine
 
 # Buat direktori aplikasi di dalam container
 WORKDIR /app
